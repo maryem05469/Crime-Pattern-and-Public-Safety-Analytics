@@ -13,18 +13,19 @@ CREATE TABLE dim_date (
     season VARCHAR(10) NOT NULL
 );
 CREATE TABLE dim_location (
-    location_id INT PRIMARY KEY,
+    location_id INT AUTO_INCREMENT PRIMARY KEY,
     district INT,
     ward DECIMAL(10,2),
     community_area DECIMAL(10,2),
     beat INT,
-    location_description VARCHAR(100)
+    location_description VARCHAR(255)
 );
 CREATE TABLE dim_incident (
-    incident_id INT PRIMARY KEY,
+    incident_id INT AUTO_INCREMENT PRIMARY KEY,
     primary_type VARCHAR(50) NOT NULL,
     description VARCHAR(100)
 );
+
 CREATE TABLE fact_crime (
     id INT PRIMARY KEY,
 
@@ -42,6 +43,7 @@ CREATE TABLE fact_crime (
     FOREIGN KEY (location_id) REFERENCES dim_location(location_id),
     FOREIGN KEY (incident_id) REFERENCES dim_incident(incident_id)
 );
+
 
 
 
